@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "wanderingtradernotifier.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "WanderingTraderEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

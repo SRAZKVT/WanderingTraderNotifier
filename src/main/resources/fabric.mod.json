@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "wanderingtradernotifier",
+  "version": "${version}",
+
+  "name": "WanderingTraderNotifier",
+  "description": "Client mod to notify you when a wandering trader spawns, and shows you where it is",
+  "authors": [
+    "SRAZKVT"
+  ],
+  "contact": {
+    "sources": "https://github.com/SRAZKVT/WanderingTraderNotifier"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+  },
+  "mixins": [
+    "wanderingtradertnotifier.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.12.12",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  }
+}
