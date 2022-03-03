@@ -32,13 +32,6 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
     }
 
     @Override
-    public void onDeath(DamageSource source) {
-        super.onDeath(source);
-        assert MinecraftClient.getInstance().player != null;
-        MinecraftClient.getInstance().player.sendMessage(new LiteralText("" + this.isGlowing()), false);
-    }
-
-    @Override
     public void tick() {
         super.tick();
         this.setGlowing(true);
