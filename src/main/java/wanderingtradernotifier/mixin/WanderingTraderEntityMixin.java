@@ -4,15 +4,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.WanderingTraderEntity;
-import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.network.packet.s2c.play.MobSpawnS2CPacket;
 import net.minecraft.text.LiteralText;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 
@@ -33,6 +29,18 @@ public abstract class WanderingTraderEntityMixin extends MerchantEntity {
                 packet.getY(),
                 packet.getZ()
         )), false);
+    }
 
+    @Override
+    public void onDeath(DamageSource source) {
+        super.onDeath(source);
+        assert MinecraftClient.getInstance().player != null;
+        MinecraftClient.getInstance().player.sendMessage(new LiteralText("" + this.isGlowing()), false);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+        this.setGlowing(true);
     }
 }
